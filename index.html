@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkiuhvjs-UxDh1iHwJ3ERXx-rTzMz71qM&libraries=places"></script>
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<title>Local Weather</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="content">
+				<div class="row">
+					<div class="col-md-12 main">
+						<p class="title">Local Weather</p>
+						<input id="searchTextField" type="text" placeholder="Search...">
+						<p class="location"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<div class="currently">Currently</div>
+							<div class="description"></div>
+							<div class="local-temperature">
+								<div class="temp-info">
+									<span class="temperature"></span>
+									<span>°</span>
+									<span class="click">C</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 extras">
+							<div class="pressure"></div>
+							<div class="humidity"></div>
+							<div class="wind"></div>
+						</div>
+					</div>
+				</div>	
+				<div class="row">
+					<div class="delimiter"></div>
+					<div id="weather-for-7days"></div>
+					<div class="delimiter bottom"></div>
+				</div>	
+				<div class="row">
+					<div class="col-md-12">
+						<div class="about">Coded by <a href="http://martinadrazic.com/" target="_blank">Martina Drazic</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
