@@ -72,7 +72,7 @@ function getWeathetForSevenDays(id){
 function creatDay(x, isToday){
 	var date = new Date(x.dt * 1000);
 	var day = isToday? "Today" : weekday[date.getDay()];
-	var newDiv ='<div class="row">' +
+	var newDiv =
 					'<div class="col-md-12">' +
 						'<div class="col-md-4"><h3>'+ day +'</h3></div>' +
 						'<div class="col-md-4 weather-image '+ getWeatherClass(x.weather[0].id)+'"></div>' +
@@ -80,8 +80,7 @@ function creatDay(x, isToday){
 							'<span class="max-temp">'+ Math.floor(x.temp.max) +'</span>' +
 							'<span class="min-temp">'+ Math.floor(x.temp.min) +'</span>' +
 						'</div>' +
-					'</div>' +
-				'</div>' ;
+					'</div>' ;
 	return newDiv;
 }
 
