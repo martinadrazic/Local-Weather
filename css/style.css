@@ -3,6 +3,7 @@ body {
 	background-image: url("image/background.jpg"); 
 	background-position: center center;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -75,6 +76,14 @@ input[type=text]:focus {
 	padding: 0px;
 	width: 42px;
 	height: 46px;
+}
+
+.temp-unit {
+	cursor: pointer;
+}
+
+.temp-unit:hover {
+	color: #83a5b3;
 }
 
 .extras {
@@ -160,4 +169,9 @@ input[type=text]:focus {
 
 .about {
 	text-align: center;
+}
+
+#location-not-avaiable {
+	text-align: center;
+	font-size: 20px;
 }

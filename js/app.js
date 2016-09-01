@@ -12,6 +12,7 @@ function setTemperature(a){
 }
 
 function init() {
+	$(".current-temp").hide();
 	getLocation();
 
 	var input = document.getElementById('searchTextField');
@@ -31,17 +32,17 @@ function init() {
 		$(this).val("")}
 	);
 
-	$(".click").click(convertTemp);
+	$(".temp-unit").click(convertTemp);
 }
 
 function convertTemp() {
 
 	if (isCelsius) {
 		setTemperature(fahrenheit);
-		$(".click").text("F");
+		$(".temp-unit").text("F");
 	} else {
 		setTemperature(celsius);
-		$(".click").text("C");	
+		$(".temp-unit").text("C");	
 	}
 
 	isCelsius = !isCelsius;
@@ -65,7 +66,6 @@ function getWeathetForSevenDays(id){
 		}
 		
 		$('#weather-for-7days').html(content);
-		console.log(content);
 	});
  }
 
@@ -97,8 +97,8 @@ function getLocation() {
 
 function getDataByCoords(coords) {
 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+coords.latitude+"&lon="+coords.longitude+"&units=metric&appid=24d0855e0f65dbda82f8b42cab34d9ad",function(json){
-		console.log(json);
-
+		$("#location-not-avaiable").hide();
+		$(".current-temp").show();
 		$(".location").text(json.name);
 		$(".description").text(json.weather[0].description);
 
