@@ -78,17 +78,17 @@ input[type=text]:focus {
 	height: 46px;
 }
 
-.temp-unit {
+.temp-info {
 	cursor: pointer;
 }
 
-.temp-unit:hover {
+.temp-info:hover {
 	color: #83a5b3;
 }
 
 .extras {
 	padding-top: 80px;
-	text-align: center;
+	font-size: 20px;
 }
 
 .delimiter {
@@ -100,16 +100,16 @@ input[type=text]:focus {
 
 .delimiter.bottom {
 	margin-top: 30px;
+	margin-bottom: 80px;
 }
 
 .wind, .pressure, .humidity {
-	font-size: 20px;
+	color: #83A5B3;
 }
 
 .first-day {
 	margin-top: 70px;
 }
-
 
 #weather-for-7days {
     margin: 0 auto;
@@ -164,7 +164,7 @@ input[type=text]:focus {
 }
 
 .min-temp {
-	color: #58534C;
+	color: #838383;
 }
 
 .about {

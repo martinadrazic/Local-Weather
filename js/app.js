@@ -2,6 +2,10 @@ $(document).ready(init);
 
 var celsius;
 var fahrenheit;
+var tempMinCelsius;
+var tempMaxCelsius;
+var tempMinFahrenheit;
+var tempMaxFahrenheit;
 var pressure;
 var humidity;
 var wind;
@@ -32,15 +36,22 @@ function init() {
 		$(this).val("")}
 	);
 
-	$(".temp-unit").click(convertTemp);
+	$(".temp-info").click(convertTemp);
+
+	// $(".max-temp").click(convertTemp);
+	// $(".min-temp").click(convertTemp);
 }
 
 function convertTemp() {
 
 	if (isCelsius) {
+		setTemperature(tempMaxFahrenheit);
+		setTemperature(tempMinFahrenheit);
 		setTemperature(fahrenheit);
 		$(".temp-unit").text("F");
 	} else {
+		setTemperature(tempMaxCelsius);
+		setTemperature(tempMinCelsius);
 		setTemperature(celsius);
 		$(".temp-unit").text("C");	
 	}
@@ -49,9 +60,9 @@ function convertTemp() {
 };
 
 function weatherExtras(){
-	$(".pressure").text("Pressure " + pressure);
-	$(".humidity").text("Humidity " + humidity);
-	$(".wind").text("Wind " + wind);
+	$(".pressure").text(pressure);
+	$(".humidity").text(humidity);
+	$(".wind").text(wind);
 }
 
 var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satruday"];
@@ -70,6 +81,8 @@ function getWeathetForSevenDays(id){
  }
 
 function creatDay(x, isToday){
+	// var tempMax = x.temp.max;
+	// var tempMin = x.temp.min;
 	var date = new Date(x.dt * 1000);
 	var day = isToday? "Today" : weekday[date.getDay()];
 	var newDiv =
@@ -103,9 +116,13 @@ function getDataByCoords(coords) {
 
 		celsius = Math.floor(json.main.temp);
 		fahrenheit = Math.floor(celsius * 1.8 + 32);
-		pressure = Math.floor(json.main.pressure) + ("hPa");
+		tempMaxCelsius = Math.floor(json.main.temp_max);
+		tempMinCelsius = Math.floor(json.main.temp_min);
+		tempMaxFahrenheit = Math.floor(tempMaxCelsius * 1.8 + 32);
+		tempMinFahrenheit = Math.floor(tempMinCelsius * 1.8 + 32);
+		pressure = Math.floor(json.main.pressure) + (" hPa");
 		humidity = json.main.humidity + ("%");
-		wind = json.wind.speed + ("km/h");
+		wind = json.wind.speed + (" km/h");
 
 		setTemperature(celsius);
 		weatherExtras();
