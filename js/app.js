@@ -2,10 +2,6 @@ $(document).ready(init);
 
 var celsius;
 var fahrenheit;
-var tempMinCelsius;
-var tempMaxCelsius;
-var tempMinFahrenheit;
-var tempMaxFahrenheit;
 var pressure;
 var humidity;
 var wind;
@@ -16,6 +12,7 @@ function setTemperature(a){
 }
 
 function init() {
+	$(".extras").hide();
 	$(".current-temp").hide();
 	getLocation();
 
@@ -37,26 +34,22 @@ function init() {
 	);
 
 	$(".temp-info").click(convertTemp);
-
-	// $(".max-temp").click(convertTemp);
-	// $(".min-temp").click(convertTemp);
 }
 
 function convertTemp() {
 
 	if (isCelsius) {
-		setTemperature(tempMaxFahrenheit);
-		setTemperature(tempMinFahrenheit);
 		setTemperature(fahrenheit);
 		$(".temp-unit").text("F");
 	} else {
-		setTemperature(tempMaxCelsius);
-		setTemperature(tempMinCelsius);
 		setTemperature(celsius);
 		$(".temp-unit").text("C");	
 	}
 
 	isCelsius = !isCelsius;
+
+	var nina = $(".max-temp").text();
+	console.log(nina);
 };
 
 function weatherExtras(){
@@ -81,8 +74,6 @@ function getWeathetForSevenDays(id){
  }
 
 function creatDay(x, isToday){
-	// var tempMax = x.temp.max;
-	// var tempMin = x.temp.min;
 	var date = new Date(x.dt * 1000);
 	var day = isToday? "Today" : weekday[date.getDay()];
 	var newDiv =
@@ -110,16 +101,13 @@ function getLocation() {
 function getDataByCoords(coords) {
 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat="+coords.latitude+"&lon="+coords.longitude+"&units=metric&appid=24d0855e0f65dbda82f8b42cab34d9ad",function(json){
 		$("#location-not-avaiable").hide();
+		$(".extras").show();
 		$(".current-temp").show();
 		$(".location").text(json.name);
 		$(".description").text(json.weather[0].description);
 
 		celsius = Math.floor(json.main.temp);
 		fahrenheit = Math.floor(celsius * 1.8 + 32);
-		tempMaxCelsius = Math.floor(json.main.temp_max);
-		tempMinCelsius = Math.floor(json.main.temp_min);
-		tempMaxFahrenheit = Math.floor(tempMaxCelsius * 1.8 + 32);
-		tempMinFahrenheit = Math.floor(tempMinCelsius * 1.8 + 32);
 		pressure = Math.floor(json.main.pressure) + (" hPa");
 		humidity = json.main.humidity + ("%");
 		wind = json.wind.speed + (" km/h");

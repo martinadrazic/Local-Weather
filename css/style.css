@@ -89,6 +89,7 @@ input[type=text]:focus {
 .extras {
 	padding-top: 80px;
 	font-size: 20px;
+	text-align: center;
 }
 
 .delimiter {
@@ -169,6 +170,7 @@ input[type=text]:focus {
 
 .about {
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 #location-not-avaiable {
