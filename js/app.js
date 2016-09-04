@@ -47,9 +47,6 @@ function convertTemp() {
 	}
 
 	isCelsius = !isCelsius;
-
-	var nina = $(".max-temp").text();
-	console.log(nina);
 };
 
 function weatherExtras(){
