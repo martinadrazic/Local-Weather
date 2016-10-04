@@ -68,6 +68,8 @@ function getWeathetForSevenDays(id) {
 		
 		var celsiusMax;
 		var celsiusMin;
+		contentCelsius = "";
+		contentFahrenheit= "";
 
 		for (var i = 0; i < json.list.length; i++) {
 			celsiusMin = Math.floor(json.list[i].temp.min);
@@ -75,6 +77,7 @@ function getWeathetForSevenDays(id) {
 			contentCelsius += createDay(json.list[i], i === 0, celsiusMin, celsiusMax, "°C");
 			contentFahrenheit += createDay(json.list[i], i===0, Math.floor(celsiusMin * 1.8 + 32), Math.floor(celsiusMax * 1.8 + 32), "°F");
 		}
+
 
 		$('#weather-for-7days').html(contentCelsius);
 	});
